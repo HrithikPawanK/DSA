@@ -2,8 +2,8 @@
 using namespace std;
 struct Node{
     int key;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
     Node(int k){
         key = k;
         left = right = NULL;
@@ -129,7 +129,7 @@ void printLeftView(Node *root){
     printLeft(root, 1);
 }
 // iterative
-// similar lo printing level by level
+// similar to printing level by level
 void printLeftViewIterative(Node *root){
     if(root==NULL){
         return;
@@ -232,7 +232,7 @@ bool findPath(Node *root, vector<Node*> &p, int n){
     p.pop_back();
     return false;
 }
-Node *lCS(Node *root, int n1, int n2){
+Node *lCA(Node *root, int n1, int n2){
     vector<Node*> p1, p2;
     if(findPath(root, p1, n1) == false or findPath(root, p2, n2) == false){
         return NULL;
@@ -247,15 +247,15 @@ Node *lCS(Node *root, int n1, int n2){
 
 // lcs efficient solution one traversal
 // assuming both n1 and n2 are present
-Node *LCSeff(Node *root, int n1, int n2){
+Node *LCAeff(Node *root, int n1, int n2){
     if(root == NULL){
         return NULL;
     }
     if(root->key == n1 or root->key == n2){
         return root;
     }
-    Node *lcs1 = LCSeff(root->left, n1, n2);
-    Node *lcs2 = LCSeff(root->right, n1, n2);
+    Node *lcs1 = LCAeff(root->left, n1, n2);
+    Node *lcs2 = LCAeff(root->right, n1, n2);
     if(lcs1 != NULL and lcs2 != NULL){
         return root;
     }
@@ -272,7 +272,7 @@ int main(){
     root->left->left = new Node(45);
     root->left->right = new Node(50);
     root->right->left = new Node(60);
-    Node *lcs = lCS(root, 50, 60);
+    Node *lcs = lCA(root, 50, 60);
     cout << lcs->key << endl;
     return 0;
 }
