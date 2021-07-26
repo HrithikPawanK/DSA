@@ -70,7 +70,63 @@ Node *Delete(Node *root, int k){
         }
     }
 }
+// closest smaller value than given.
+// if given value present then return that value.
+Node* FloorInBST(Node *root, int k){
+    Node *res = NULL;
+    while(root!=NULL){
+        if(root->val == k) return root;
+        else if(root->val > k){
+            root = root->left;
+        }
+        else{
+            res = root;
+            root = root->right;
+        }
+    }
+    return res;
+}
+// closet value greater than or equal to given value.
+Node *Ceil(Node *root, int k){
+    Node *res = NULL;
+    while(root!=NULL){
+        if(root->val == k) return root;
+        else if(root->val < k){
+            root = root->right;
+        }
+        else{
+            res = root;
+            root = root->left;
+        }
+    }
+    return res;
+}
+/*  
+    Applications of BST
+    1. to maintain sorted stream of data(or sorted set of data). we can use to maintain data sorted
+       if it involves insertion, deletions.
+    2. to implement doubly ended priority queue.
+    3. to solve problems like:
+        a) count smaller/ greater in a stream
+        b) Floor/ ceil/ greater/ smaller in a stream.
+*/
+
+// find kth smallest element
+// kth smallest can be found easily if we do inorder traversal for k steps.
+// as inorder traversal prints elements in sorted order in BST
+
+void printKth(Node *root, int k, int& count){
+    if(root){
+        printKth(root->left, k, count);
+        count++;
+        if(count == k){
+            cout << root->val << endl;
+            return;
+        }
+        printKth(root->right, k, count);
+    }
+}
+
 int main(){
-    
     return 0;
 }
