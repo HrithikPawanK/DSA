@@ -68,8 +68,8 @@ void RBSearch(string txt, string pat){
     for(int i=0;i<=(N-M);i++){
        //Check for hit
        if(p==t){
-           bool flag=true;
-           for(int j=0;j<M;j++)
+            bool flag=true;
+            for(int j=0;j<M;j++)
                 if(txt[i+j]!=pat[j]){flag=false;break;}
             if(flag==true)cout<<i<<" ";
        }

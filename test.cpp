@@ -1,38 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-#define endl "\n"
-
-vector<pair<int,int>> dir = {{-1,-2}, {1,2},{-2,-1},{2, 1},{-2, 1},{2, 1},{-1, 2}, {1, 2}};
-bool inside(int A, int B, int x, int y){
-    return x >= 0 and x < A and y >= 0 and y < B;
+#define SWAP(a, b, c) c t; t = a, a = b, b = t
+unsigned int foo(int a, int b){
+    return 1 + a < b ? -1 : foo(a--, b++);
 }
-int knight(int A, int B, int C, int D, int E, int F) {
-    C--, D--, E--, F--;
-    vector<vector<int>> v(A, vector<int>(B, 1));
-    queue<pair<pair<int,int>,int>> q;
-    q.push({{A, B}, 0});
-    v[A][B] = 0;
-    while(!q.empty()){
-        auto p = q.front();
-        q.pop();
-        int x = p.first.second , y = p.first.first;
-        if(x == E and y == F) return p.second;
-        for(auto dp : dir){
-            int dx = x + dp.second;
-            int dy = y + dp.first;
-            if(inside(A, B, dx, dy) and v[dx][dy]==1){
-                q.push({{dx, dy}, p.second + 1});
-                v[dx][dy] = 0;
-            }
-        }
-    }
+unsigned int fun(){
     return -1;
 }
+void solve(){
+    int a = 10, b = 20;
+    SWAP(a, b, int);
+    cout << a << " " << b << endl;
+    cout << fun() << endl;
+}
 int main(){
-    int a, b, c, d, e, f;
-    cout << "hp" << endl;
-    cin >> a >> b >> c >> d >> e >> f;
-    cout << knight(a, b, c, d, e, f) << endl;
+    ios_base :: sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }
