@@ -20,6 +20,7 @@ bool insert(TrieNode* root, int row, vector<vector<bool>>& matrix){
     }
     return flag;
 }
+// time complexity -> O(mn), space complexity -> O(mn)
 int countDist(){
     TrieNode* root = new TrieNode();
     vector<vector<bool>> matrix(3, vector<bool>(3));
