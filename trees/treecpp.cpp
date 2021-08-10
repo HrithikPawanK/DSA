@@ -249,6 +249,62 @@ int diameter(Node *root, int &d){
     d = max(d, 1 + lh + rh);
     return 1 + max(lh, rh);
 }
+// lowest common ancestor
+// naive 
+// find two paths then find common last common element in two paths
+// given root, n1, n2;
+
+bool findPath(Node *root, vector<Node*> &p, int n){
+    if(root==NULL){
+        return false;
+    }
+    p.push_back(root);
+    if(root->val == n){
+        return true;
+    }
+    if(findPath(root->left, p, n) || findPath(root->right, p, n)){
+        return true;
+    }
+    p.pop_back();
+    return false;
+}
+Node *lCA(Node *root, int n1, int n2){
+    vector<Node*> p1, p2;
+    if(findPath(root, p1, n1) == false or findPath(root, p2, n2) == false){
+        return NULL;
+    }
+    for(int i = 0; i < p1.size() and i < p2.size(); i++){
+        if(p1[i+1]!=p2[i+1]){
+            return p1[i];
+        }
+    }
+    return NULL;
+}
+
+// lcs efficient solution one traversal
+// assuming both n1 and n2 are present
+Node *LCAeff(Node *root, int n1, int n2){
+    if(root == NULL){
+        return NULL;
+    }
+    if(root->val == n1 or root->val == n2){
+        return root;
+    }
+    Node *lcs1 = LCAeff(root->left, n1, n2);
+    Node *lcs2 = LCAeff(root->right, n1, n2);
+    if(lcs1 != NULL and lcs2 != NULL){
+        return root;
+    }
+    if(lcs1!=NULL){
+        return lcs1;
+    }else{
+        return lcs2;
+    }
+}
+// just find the farthest node from given leaf.
+int BurnFromLeaf(Node *leaf){
+
+}
 int main(){
     Node *root = new Node(10);
     root->left = new Node(20);

@@ -13,9 +13,9 @@ int main(){
     // m.at(10) = 300;  same as square brackets. but here if key not present then it returns exception.
     // m.size()
     // m.find()
-    // m.count()
+    // m.count() --> return 1 if found, 0 if not found.
     // m.lower_bound()
-    // m.upper_bound()
+    // m.upper_bound() // it sorted in decreasing if we search for x we get lesser value t i.e t < x
     // m.earse()
     for(auto it = m.begin(); it != m.end(); it++){
         cout << (*it).first << " " << (*it).second << endl;
