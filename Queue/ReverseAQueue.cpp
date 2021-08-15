@@ -27,7 +27,7 @@ int main(){
         cout << q.front() << " ";
         q.pop();
     }
-    cout << endl;
+    cout << endl; 
     
     // for recursive method.
     queue<int> q1;
