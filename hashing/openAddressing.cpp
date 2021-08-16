@@ -7,6 +7,7 @@ struct MyHash{
     int cap, size = 0;
     MyHash(int c){
         cap = c;
+        arr = new int[cap];
         for(int i = 0; i < cap; i++){
             arr[i] = -1;
         }
