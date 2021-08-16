@@ -1,3 +1,8 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// timecomplexity --> O(ciel(logn))
+
 int binarySearch(int arr[], int x, int n){
 	int l = 0, r = n-1 ;
 	while(l<=r){
@@ -15,4 +20,7 @@ int binarySearch(int arr[], int x, int n){
 	return -1;
 }
 
-// timecomplexity --> O(ciel(logn))
+int main(){
+	
+	return 0;
+}

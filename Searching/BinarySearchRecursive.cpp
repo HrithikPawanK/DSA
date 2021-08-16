@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 int binarySearch(int arr[],int x, int l, int h){
 	if(l>h){
 		return -1;
@@ -12,4 +14,8 @@ int binarySearch(int arr[],int x, int l, int h){
 	else{
 		return binarySearch(arr,x,l+1,h);
 	}
+}
+int main(){
+	
+	return 0;
 }
