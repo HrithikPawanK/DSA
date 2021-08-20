@@ -2,6 +2,8 @@
 using namespace std;
 //Function to find length of longest increasing subsequence.
 // tail of i stores the minimum possible tail value for LIS of length i + 1.
+// if current element greater thant tail element then append
+// else place the current element using Binary Search.
 int longestSubsequence(int n, int a[])
 {
     vector<int> tail;
