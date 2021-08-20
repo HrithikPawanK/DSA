@@ -15,13 +15,6 @@ int LCP(string s, int i, int j, vector<vector<int>> &memo){
     }
     return memo[i][j] = max(LCP(s,i+1, j, memo), LCP(s,i,j-1, memo));
 }
-int LCPDP(string s){
-    int n = s.length();
-    int dp[n][n];
-    for(int i = 0; i < n; i++){
-        dp[i][i] = 1;
-    }
-}
 int main(){
     string s;
     cin >> s;
