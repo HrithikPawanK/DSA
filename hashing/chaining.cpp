@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-/*----------------------------------------------------------------------------------------------------*/
 struct MyHash{
     int BUCKET;
     list<int> *table;
