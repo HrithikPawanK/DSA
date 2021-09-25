@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-/*----------------------------------------------------------------------------------------------------*/
 void SieveOfEratosthenes(ll n){
     vector<ll> prime(n+1, true);
     for(ll p = 2; p*p <= n; p++){

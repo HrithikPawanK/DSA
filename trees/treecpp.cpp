@@ -305,12 +305,73 @@ Node *LCAeff(Node *root, int n1, int n2){
 int BurnFromLeaf(Node *leaf){
 
 }
+
+// iterative preorder
+// logic : we use stack and insert right first then left.
+void preorderIter(Node *root){
+    if(!root) return;
+    stack<Node*> st;
+    st.push(root);
+    while(!st.empty()){
+        Node* node = st.top();
+        st.pop();
+        cout << node->val << " ";
+        if(node->right) st.push(node->right);
+        if(node->left) st.push(node->left);
+    }
+}
+// logic : if node is not null, insert in stack and check for left, if left is null then pop from stack and print then check right.
+void inorderIter(Node* root){
+    if(!root) return;
+    stack<Node*> st;
+    Node* node = root;
+    while(true){
+        if(node != NULL){
+            st.push(node);
+            node = node->left;
+        }else{
+            if(st.empty()) break;
+            node = st.top();
+            st.pop();
+            cout << node->val << " ";
+            node = node->right;
+        }
+    }
+}
+
+// using two stacks
+// logic : for every node pop and insert to stack2, insert its left and right to stack1
+// finally pop stack2 to get the result.
+void postOrderIter(Node* root){
+    if(root == NULL) return;
+    stack<Node*> s1, s2;
+    s1.push(root);
+    while(!s1.empty()){
+        Node* node = s1.top();
+        s1.pop();
+        s2.push(node);
+        if(node->left) s1.push(node->left);
+        if(node->right) s1.push(node->right); 
+    }
+    while(!s2.empty()){
+        Node* node = s2.top();
+        s2.pop();
+        cout << node->val << " ";
+    }
+    cout << endl;
+}
+
+// postorder using one stack
+void postOrderIterEff(Node* root){
+    if(root == NULL) return;
+}
+
 int main(){
     Node *root = new Node(10);
     root->left = new Node(20);
     root->right = new Node(30);
     root->left->left = new Node(40);
-    inorder(root);
+    inorderIter(root);
     cout << endl;
     printAtK(root, 1);
     cout << endl;
